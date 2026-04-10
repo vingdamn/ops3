@@ -13,7 +13,7 @@ sudo ip link set br-horizon up
 sudo ip addr add 10.0.0.0/24 dev br-horizon
 # sudo ip link set eth0 master br-horizon 
 
-qemu-system-x86_64 -enable-kvm -m 768 -name nova-prime -drive file=nova-prime.qcow2,format=qcow2 -cdrom alpine.iso -boot d -netdev tap,id=net0,ifname=br-horizonscript=no,downscript=no -device virtio-net-pci,netdev=net0 -nographic 
+qemu-system-x86_64 -enable-kvm -m 768 -name nova-prime -drive file=nova-prime.qcow2,format=qcow2 -cdrom alpine.iso -boot d -netdev tap,id=net0,ifname=br-horizon,script=no,downscript=no -device virtio-net-pci,netdev=net0 -nographic 
 
 sudo lxc-create -n Pulse-Prime -t download -- --dist alpine --release 3.19 --arch amd64
 #nano /var/lib/lxc/Pulse-Prime/config
